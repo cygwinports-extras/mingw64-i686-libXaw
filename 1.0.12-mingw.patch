@@ -1,0 +1,14 @@
+--- origsrc/libXaw-1.0.12/src/OS.c	2013-09-07 22:57:54.000000000 -0500
++++ src/libXaw-1.0.12/src/OS.c	2013-11-21 19:39:05.967831600 -0600
+@@ -17,6 +17,11 @@
+ #define HAS_SC_PAGESIZE	/* _SC_PAGESIZE may be an enum for Linux */
+ #endif
+ 
++#ifdef __MINGW32__
++/* provided by libgcc.a but not prototyped anywhere */
++int getpagesize(void);
++#endif
++
+ int
+ _XawGetPageSize(void)
+ {
